@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 07:09:25 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/06 15:49:46 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:08:58 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,22 @@ int	main(void)
 	PhoneBook phone_book;
 
 	cout <<
-	"Welcome to \"My Awesome PhoneBook\"\n"
-	"	ADD - Add a new contact			\n"
-	"	SEARCH - Search for a contact	\n"
-	"	EXIT - Exit the program			\n"
-	<< endl;
+	"	Welcome to \"My Awesome PhoneBook\"		\n"
+	"		ADD - Add a new contact				\n"
+	"		SEARCH - Search for a contact		\n"
+	"		EXIT - Exit the program				\n";
 	while (42)
 	{
 		input = get_input();
 		if (input == "EXIT")
 			exit(0);
 		else if (input == "SEARCH")
-		{
-			cout << "todo search";
 			phone_book.search_contact();
-		}
+
 		else if (input == "ADD")
-			cout << "todo";
+		{
+			phone_book.get_contact_input();
+		}
 	}
 }
 
