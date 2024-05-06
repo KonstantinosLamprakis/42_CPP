@@ -6,20 +6,27 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 07:05:40 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/06 20:12:13 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:46:06 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook() : phone_size(0), last_index(0) {};
+PhoneBook::~PhoneBook() {};
+
 void PhoneBook::add_contact(Contact new_con)
 {
-	for (int i = phone_size - 1; i >= 0; i--)
-		contacts[i] = contacts[i - 1];
-	contacts[0] = new_con;
 	if (this->phone_size < 8)
-		this->phone_size++;
+	{
+		this->last_index = 0;
+		contacts[this->phone_size++] = new_con;
+		return ;
+	}
+	contacts[last_index] = new_con;
+	last_index++;
+	last_index %= 8;
 }
 
 string PhoneBook::get_formated_output(string str)
@@ -70,14 +77,17 @@ void PhoneBook::get_contact_input(void)
 void PhoneBook::get_from_input(string prommt, void (Contact::*set_value)(string), Contact& cont)
 {
 	std::string	input;
+	int	i;
 
 	cout << prommt;
 	while (42)
 	{
 		getline(cin, input);
-		if (!input.empty())
+		for (i = 0; input[i] == ' ' || input[i] == '\t';)
+			i++;
+		if (!input.empty() && input[i])
 			break ;
-		cout << prommt << " can not be emtpy. Try again.\n";
+		cout << prommt << "can not be emtpy. Try again.\n" << prommt;
 		cin.clear();
 	}
 	(cont.*set_value)(input);
