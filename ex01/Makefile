@@ -10,7 +10,7 @@ INCLUDES = -I./ClapTrap.hpp -I./ScavTrap.hpp
 
 NAME = program
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) -o $@
