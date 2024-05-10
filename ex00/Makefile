@@ -7,7 +7,7 @@ SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-INCLUDES = -I./A -I./nimal.hpp -I./Cat.hpp -I./Dog.hpp -I./WrongAnimal.hpp -I./WrongCat.hpp
+INCLUDES = -I./Animal.hpp -I./Cat.hpp -I./Dog.hpp -I./WrongAnimal.hpp -I./WrongCat.hpp
 
 NAME = program
 
