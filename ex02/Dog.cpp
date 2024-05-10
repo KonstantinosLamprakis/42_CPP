@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:25:43 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/10 10:32:12 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:01:40 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Dog::Dog(const Dog &original)
 {
 	std::cout << "Copy Constructor of Dog\n";
 	this->type = original.getType();
-	this->brain = original.brain;
+	this->brain = new Brain(*original.brain);
 }
 
 Dog::~Dog()
@@ -38,7 +38,7 @@ Dog &Dog::operator=(const Dog &original)
 	if (this != &original)
 	{
 		this->type = original.getType();
-		this->brain = original.brain;
+		this->brain = new Brain(*original.brain);
 	}
 	return (*this);
 }

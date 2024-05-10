@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:25:46 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/10 10:32:22 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:01:56 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Cat::Cat(const Cat &original)
 {
 	std::cout << "Copy Constructor of Cat\n";
 	this->type = original.getType();
-	this->brain = original.brain;
+	this->brain = new Brain(*original.brain);
 }
 
 Cat::~Cat()
@@ -38,7 +38,7 @@ Cat &Cat::operator=(const Cat &original)
 	if (this != &original)
 	{
 		this->type = original.getType();
-		this->brain = original.brain;
+		this->brain = new Brain(*original.brain);
 	}
 	return (*this);
 }

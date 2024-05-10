@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:24:57 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/10 10:44:46 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:05:30 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int main(void)
 {
-	// Animal test = new Animal();
+	// Animal *test = new Animal();
+	// test->getType();
 	const Animal* j = new Dog();
 	const Animal* k = new Cat();
 	Animal *an_arr[100];
@@ -32,5 +33,4 @@ int main(void)
 
 	delete j;//should not create a leak
 	delete k;
-	system("leaks program");
 }
