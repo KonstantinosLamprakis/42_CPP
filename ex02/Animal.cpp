@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:28:32 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/10 09:30:55 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:09:04 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ Animal &Animal::operator=(const Animal &original)
 	if (this != &original)
 		this->type = original.getType();
 	return (*this);
-}
-
-void Animal::makeSound() const
-{
-	std::cout << "Animal makes sound: Wooooo\n";
 }
 
 std::string Animal::getType() const

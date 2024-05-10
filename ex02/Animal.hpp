@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:25:49 by klamprak          #+#    #+#             */
-/*   Updated: 2024/05/10 10:43:37 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:09:24 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class Animal
 {
 	protected:
-		Animal();
-		Animal(const Animal &original);
-		Animal &operator=(const Animal &original);
 		std::string type;
 
 	public:
+		Animal();
+		Animal(const Animal &original);
+		Animal &operator=(const Animal &original);
 		virtual ~Animal();
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 		std::string getType() const;
 };
 
