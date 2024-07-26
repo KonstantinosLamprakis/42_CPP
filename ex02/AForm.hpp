@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:13:03 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 13:04:31 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 14:04:39 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <random>
 
 class Bureaucrat;
 

@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:19:13 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 13:42:54 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:57:04 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void execute(const Bureaucrat &executor) const{
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const{
 	AForm::execute(executor);
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox\n";
 }

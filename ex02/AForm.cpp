@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:12:58 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 13:05:43 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:55:00 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void AForm::beSigned(const Bureaucrat &b)
 		throw (GradeTooLowException());
 }
 
-void execute(const Bureaucrat &executor) const{
+void AForm::execute(const Bureaucrat &executor) const{
 	if (!this->isSigned())
 		throw(FormNotSignedException());
 	if (executor.getGrade() > this->getExecGrade())
