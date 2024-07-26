@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:13:30 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 11:33:11 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 15:47:43 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int main(void)
 	Bureaucrat b1("Bureaucrat1", 140);
 	std::cout << "Normal Bureaucrat:\n" << b1 << std::endl;
 	std::cout << "Should get failure on signing:\n" << std::endl;
-	b1.signFrom(f4);
+	b1.signForm(f4);
 
 	Bureaucrat b2("Bureaucrat2", 1);
 	std::cout << "Normal Bureaucrat:\n" << b2 << std::endl;
 	std::cout << "Should get success on signing:\n" << std::endl;
-	b2.signFrom(f4);
+	b2.signForm(f4);
 
 	// try{
 	// }catch (std::exception &e){
