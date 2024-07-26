@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:13:03 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 11:32:44 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:41:03 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@
 
 class Bureaucrat;
 
-class Form{
+class AForm{
 	private:
 		const std::string _name;
+		const std::string _target;
 		const int _signed_grade;
 		const int _exec_grade;
 		bool _is_signed;
 
 	public:
 		// constructors
-		Form();
-		Form(const std::string name, const int singed_grade, const int exec_grade);
-		Form(const Form &other);
-		~Form();
-		Form &operator=(const Form &other);
+		AForm();
+		AForm(const std::string name, const std::string target, const int singed_grade, const int exec_grade);
+		AForm(const AForm &other);
+		~AForm();
+		AForm &operator=(const AForm &other);
 
 		// exceptions
 		class GradeTooHighException : public std::exception{
@@ -44,11 +45,13 @@ class Form{
 		// Getters
 		bool isSigned() const;
 		std::string getName() const;
+		std::string getTarget() const;
 		int getSignedGrade() const;
 		int getExecGrade() const;
 
 		// other
 		void beSigned(const Bureaucrat &b);
+		virtual void execute(const Bureaucrat &executor) const = 0;
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &f);
+std::ostream &operator<<(std::ostream &os, const AForm &f);

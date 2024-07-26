@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:17:46 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 11:34:59 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:35:36 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -35,7 +35,8 @@ class Bureaucrat
 
 		const std::string &getName(void) const;
 		int getGrade(void) const;
-		void signFrom(Form &form) const;
+		void signForm(AForm &form) const;
+		void executeForm(AForm const &form);
 
 	class GradeTooLowException : public std::exception
 	{

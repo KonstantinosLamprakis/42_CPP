@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:19:00 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 12:27:13 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:30:51 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 
+		void execute(const Bureaucrat &executor) const;
 };
