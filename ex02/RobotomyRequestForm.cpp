@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:19:08 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 14:04:33 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:28:16 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const{
 	AForm::execute(executor);
 	std::cout << "Trrr\nTr\n..Trrrrr\n";
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::bernoulli_distribution d(0.5);
-	if (d(gen))
-		std::cout << this->getTarget() << " has been robotomized successfully.\n";
+	std::srand(time(0));
+	if (rand() % 2 == 0)
+		std::cout << this->getTarget() << " has been robotomized successfully1.\n";
 	else
 		std::cout << "The robotomy failed\n";
 }

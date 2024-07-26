@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:19:03 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 13:59:29 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:09:21 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
 	AForm::execute(executor);
-	std::ofstream ofs(this->getTarget() + "_shrubbery");
+	std::string filename = this->getTarget() + "_shrubbery";
+	std::ofstream ofs(filename.c_str());
 	if (!ofs) {
 		std::cerr << "Error: Could not create file " << this->getTarget() + "_shrubbery" << std::endl;
 		return;
