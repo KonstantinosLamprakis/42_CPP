@@ -6,9 +6,11 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:19:06 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 12:30:56 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:51:26 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "AForm.hpp"
 

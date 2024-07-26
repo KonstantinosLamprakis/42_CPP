@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:13:03 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 12:41:03 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:04:31 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class AForm{
 	public:
 		// constructors
 		AForm();
-		AForm(const std::string name, const std::string target, const int singed_grade, const int exec_grade);
+		AForm(const std::string name, const std::string target, const int signed_grade, const int exec_grade);
 		AForm(const AForm &other);
 		~AForm();
 		AForm &operator=(const AForm &other);
@@ -42,6 +42,10 @@ class AForm{
 			const char *what() const throw();
 		};
 
+		class FormNotSignedException : public std::exception{
+			const char *what() const throw();
+		};
+
 		// Getters
 		bool isSigned() const;
 		std::string getName() const;
@@ -51,7 +55,7 @@ class AForm{
 
 		// other
 		void beSigned(const Bureaucrat &b);
-		virtual void execute(const Bureaucrat &executor) const = 0;
+		virtual void execute(const Bureaucrat &executor) const;
 };
 
 std::ostream &operator<<(std::ostream &os, const AForm &f);

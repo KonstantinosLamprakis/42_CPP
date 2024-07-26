@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:12:58 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 12:40:03 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:05:43 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ AForm::AForm() : _name("defaultName"), _target("defaultTarget"), _signed_grade(1
 	std::cout << "Default constructor called" << std::endl;
 }
 
-AForm::AForm(const std::string name, const std::string target, const int singed_grade, const int exec_grade) : _name(name), _target(target), _signed_grade(singed_grade), _exec_grade(exec_grade), _is_signed(false){
+AForm::AForm(const std::string name, const std::string target, const int signed_grade, const int exec_grade) : _name(name), _target(target), _signed_grade(signed_grade), _exec_grade(exec_grade), _is_signed(false){
 	std::cout << "Parametric constructor called" << std::endl;
-	if (singed_grade > 150 || exec_grade > 150)
+	if (signed_grade > 150 || exec_grade > 150)
 		throw (GradeTooLowException());
-	if (singed_grade < 0 || exec_grade < 0)
+	if (signed_grade < 0 || exec_grade < 0)
 		throw (GradeTooHighException());
 }
 
@@ -50,6 +50,10 @@ const char *AForm::GradeTooHighException::what() const throw(){
 
 const char *AForm::GradeTooLowException::what() const throw(){
 	return ("Grade is too low");
+}
+
+const char *AForm::FormNotSignedException::what() const throw(){
+	return ("Form is not signed");
 }
 
 // Getters
@@ -81,6 +85,15 @@ void AForm::beSigned(const Bureaucrat &b)
 	else
 		throw (GradeTooLowException());
 }
+
+void execute(const Bureaucrat &executor) const{
+	if (!this->isSigned())
+		throw(FormNotSignedException());
+	if (executor.getGrade() > this->getExecGrade())
+		throw(GradeTooLowException());
+}
+
+
 
 // overload << operator
 std::ostream &operator<<(std::ostream &os, const AForm &f){

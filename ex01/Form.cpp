@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:12:58 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 11:35:30 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:54:16 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ Form::Form() : _name("defaultName"), _signed_grade(150), _exec_grade(150), _is_s
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(const std::string name, const int singed_grade, const int exec_grade) : _name(name), _signed_grade(singed_grade), _exec_grade(exec_grade), _is_signed(false){
+Form::Form(const std::string name, const int signed_grade, const int exec_grade) : _name(name), _signed_grade(signed_grade), _exec_grade(exec_grade), _is_signed(false){
 	std::cout << "Parametric constructor called" << std::endl;
-	if (singed_grade > 150 || exec_grade > 150)
+	if (signed_grade > 150 || exec_grade > 150)
 		throw (GradeTooLowException());
-	if (singed_grade < 0 || exec_grade < 0)
+	if (signed_grade < 0 || exec_grade < 0)
 		throw (GradeTooHighException());
 }
 

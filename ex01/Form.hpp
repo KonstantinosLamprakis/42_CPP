@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:13:03 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 11:32:44 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 12:54:16 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Form{
 	public:
 		// constructors
 		Form();
-		Form(const std::string name, const int singed_grade, const int exec_grade);
+		Form(const std::string name, const int signed_grade, const int exec_grade);
 		Form(const Form &other);
 		~Form();
 		Form &operator=(const Form &other);
