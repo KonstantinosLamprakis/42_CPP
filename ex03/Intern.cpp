@@ -6,13 +6,11 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:41:03 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/26 15:41:20 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:05:11 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-
-typedef std::function<AForm*()> FactoryFunction;
 
 Intern::Intern() {}
 Intern::Intern(const Intern &other) {
@@ -41,7 +39,6 @@ AForm *Intern::makeForm(const std::string &name, const std::string &target) cons
 	const int len = 3;
 	std::string namesArr[] = {"shrubbery request", "robotomy request", "presidentialPardon request"};
 	AForm *(*formsArr[])(const std::string &name, const std::string &target) = { createShrubbery, createRobotomy, createPresidentialPardon };
-	// FactoryFunction formsArr[] = { createShrubbery, createRobotomy, createPresidentialPardon };
 
 	if (target.empty() || name.empty())
 	{
