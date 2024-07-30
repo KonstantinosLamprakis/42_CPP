@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:22:59 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/30 12:49:16 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:22:43 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int main(void)
 {
-
+	Base *b;
+	for (int i = 0; i < 10; i++){
+		b = generate();
+		identify(b);
+		identify(*b);
+	}
 }

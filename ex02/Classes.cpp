@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:23:05 by klamprak          #+#    #+#             */
-/*   Updated: 2024/07/30 13:06:46 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:21:47 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@ Base::~Base(){}
 
 Base * generate(void){
 	Base *result;
-	std::srand(time(0));
+	static bool isFirstTime = 0;
+	if (!isFirstTime)
+	{
+		std::srand(time(0));
+		isFirstTime = 1;
+	}
 	float random = (float)rand() / (float)RAND_MAX;
 	std::cout << "random: " << random << std::endl;
 	if (random < 0.33){
+		std::cout << "Created A\n";
 		result = new A();
 	}else if (random < 0.66){
+		std::cout << "Created B\n";
 		result = new B();
 	}else{
+		std::cout << "Created C\n";
 		result = new C();
 	}
 	return (result);
