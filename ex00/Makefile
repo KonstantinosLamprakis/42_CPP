@@ -6,7 +6,7 @@
 #    By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/30 16:46:30 by klamprak          #+#    #+#              #
-#    Updated: 2024/08/09 15:10:20 by klamprak         ###   ########.fr        #
+#    Updated: 2024/08/09 17:01:08 by klamprak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME	= btc
 
 CC		= c++
 
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror
 
 HEADER	= BitcoinExchange.hpp
 
