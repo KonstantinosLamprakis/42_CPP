@@ -1,0 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 16:58:54 by klamprak          #+#    #+#             */
+/*   Updated: 2024/08/10 19:00:01 by klamprak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+
+#include <iostream>
+#include <list>
+#include <deque>
+#include <set>
+
+#include <regex>
+#include <string>
+#include <cstring>
+
+class PmergeMe {
+    private:
+        std::deque<int> dataDeq;
+        std::list<int> dataList;
+
+    public:
+        PmergeMe();
+        PmergeMe(const PmergeMe &other);
+        PmergeMe &operator=(const PmergeMe &other);
+        ~PmergeMe();
+
+        void sort(char **nbrs_str);
+        int validateInput(char **nbrs_str);
+        void sortDeque();
+        void sortList();
+};
+
+
+template <typename Container>
+bool hasDuplicates(const Container& container);
+// void insertionSortList(std::list<int> &lst);
+// std::list<int> mergeLists(const std::list<int> &l1, const std::list<int> &l2);
+// void fordJohnsonSort(std::list<int>& lst, size_t chunkSize);
