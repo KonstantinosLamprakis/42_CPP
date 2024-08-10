@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:58:54 by klamprak          #+#    #+#             */
-/*   Updated: 2024/08/10 19:00:01 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/08/10 19:05:00 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ class PmergeMe {
 
 template <typename Container>
 bool hasDuplicates(const Container& container);
-// void insertionSortList(std::list<int> &lst);
-// std::list<int> mergeLists(const std::list<int> &l1, const std::list<int> &l2);
-// void fordJohnsonSort(std::list<int>& lst, size_t chunkSize);
+void insertionSortList(std::list<int> &lst);
+std::list<int> mergeLists(const std::list<int> &l1, const std::list<int> &l2);
+void fordJohnsonSort(std::list<int>& lst, size_t chunkSize);
