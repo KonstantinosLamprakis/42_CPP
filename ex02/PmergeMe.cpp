@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:58:51 by klamprak          #+#    #+#             */
-/*   Updated: 2024/08/10 19:16:58 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/08/10 19:36:33 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ int PmergeMe::validateInput(char **nbrs_str){
 void PmergeMe::sort(char **nbrs_str){
     if (!validateInput(nbrs_str))
         return ;
-    // sortDeque();
-    // sortList();
     size_t chunkSize = 2; // Define chunk size for insertion sort
 
     std::cout << "Original list: ";
@@ -85,10 +83,17 @@ void PmergeMe::sort(char **nbrs_str){
     }
     std::cout << std::endl;
 
-    fordJohnsonSort(dataList, chunkSize);
+    fordJohnsonSortList(dataList, chunkSize);
+    fordJohnsonSortDeque(dataDeq, chunkSize);
 
     std::cout << "Sorted list: ";
     for (std::list<int>::iterator it = dataList.begin(); it != dataList.end(); it++){
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Sorted deque: ";
+    for (std::deque<int>::iterator it = dataDeq.begin(); it != dataDeq.end(); it++){
         std::cout << *it << " ";
     }
     std::cout << std::endl;
@@ -106,12 +111,13 @@ bool hasDuplicates(const Container &container) {
 }
 
 // Insertion sort for std::list
-void insertionSortList(std::list<int> &lst) {
+template <typename Container>
+void insertionSortList(Container &lst) {
     if (lst.size() <= 1) 
         return;
-    for (std::list<int>::iterator it1 = std::next(lst.begin()); it1 != lst.end(); ++it1) {
+    for (typename Container::iterator it1 = std::next(lst.begin()); it1 != lst.end(); ++it1) {
         int value = *it1;
-        std::list<int>::iterator it2 = it1;
+        typename Container::iterator it2 = it1;
         while (it2 != lst.begin() && *std::prev(it2) > value) {
             *it2 = *std::prev(it2);
             --it2;
@@ -121,10 +127,11 @@ void insertionSortList(std::list<int> &lst) {
 }
 
 // Merge two sorted lists
-std::list<int> mergeLists(const std::list<int> &l1, const std::list<int> &l2) {
-    std::list<int> merged;
-    std::list<int>::const_iterator it1 = l1.begin();
-    std::list<int>::const_iterator it2 = l2.begin();
+template <typename Container>
+Container mergeLists(const Container &l1, const Container &l2) {
+    Container merged;
+    typename Container::const_iterator it1 = l1.begin();
+    typename Container::const_iterator it2 = l2.begin();
 
     while (it1 != l1.end() && it2 != l2.end()) {
         if (*it1 < *it2) {
@@ -146,7 +153,49 @@ std::list<int> mergeLists(const std::list<int> &l1, const std::list<int> &l2) {
 }
 
 // Ford-Johnson Merge-Insertion Sort
-void fordJohnsonSort(std::list<int> &lst, size_t chunkSize) {
+void fordJohnsonSortDeque(std::deque<int> &lst, size_t chunkSize) {
+    if (lst.size() <= chunkSize) {
+        insertionSortList(lst);
+        return;
+    }
+
+    // Divide the list into chunks
+    std::deque<std::deque<int> > chunks;
+    std::deque<int>::iterator it = lst.begin();
+    while (it != lst.end()) {
+        std::deque<int> chunk;
+        for (size_t i = 0; i < chunkSize && it != lst.end(); ++i) {
+            chunk.push_back(*it++);
+        }
+        insertionSortList(chunk); // Sort each chunk
+        chunks.push_back(chunk);
+    }
+
+    // Merge sorted chunks
+    while (chunks.size() > 1) {
+        std::deque<std::deque<int> > mergedChunks;
+        std::deque<std::deque<int> >::iterator it1 = chunks.begin();
+        std::deque<std::deque<int> >::iterator it2 = std::next(it1);
+
+        while (it2 != chunks.end()) {
+            mergedChunks.push_back(mergeLists(*it1, *it2));
+            it1 = std::next(it2);
+            if (it1 == chunks.end())
+                break;
+            it2 = std::next(it1);
+        }
+
+        // If there is an odd number of chunks, add the last chunk as is
+        if (it1 != chunks.end()) {
+            mergedChunks.push_back(*it1);
+        }
+        chunks = mergedChunks;
+    }
+    lst = chunks.front();
+}
+
+// Ford-Johnson Merge-Insertion Sort
+void fordJohnsonSortList(std::list<int> &lst, size_t chunkSize) {
     if (lst.size() <= chunkSize) {
         insertionSortList(lst);
         return;
