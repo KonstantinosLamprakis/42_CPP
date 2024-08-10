@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:00:55 by klamprak          #+#    #+#             */
-/*   Updated: 2024/08/09 17:00:58 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:09:53 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void BitcoinExchange::getData(const std::string &file_name){
         file.close();
     } else {
         std::cerr << "Error: unable to open DB file\n";
-    }
-    for (std::map<std::string, float>::iterator it = dataMap.begin(); it != dataMap.end(); ++it) {
-        std::cout << "Key: " << it->first << ": " << it->second << std::endl;
     }
 }
 
