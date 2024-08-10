@@ -6,13 +6,13 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:58:51 by klamprak          #+#    #+#             */
-/*   Updated: 2024/08/10 19:36:33 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:02:43 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(){}
+PmergeMe::PmergeMe(): listTime(0), deqTime(0){}
 
 PmergeMe::PmergeMe(const PmergeMe &other){
     dataDeq = other.dataDeq;
@@ -75,32 +75,51 @@ int PmergeMe::validateInput(char **nbrs_str){
 void PmergeMe::sort(char **nbrs_str){
     if (!validateInput(nbrs_str))
         return ;
+
+    std::cout << "Before: ";
+    for (std::list<int>::iterator it = dataList.begin(); it != dataList.end(); it++){
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    sortBoth("list");
+    sortBoth("deque");
+
+    std::cout << "After: ";
+    for (std::list<int>::iterator it = dataList.begin(); it != dataList.end(); it++){
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    printDuration();
+}
+
+void PmergeMe::sortBoth(std::string container){
     size_t chunkSize = 2; // Define chunk size for insertion sort
+    
+    if (container != "deque" && container != "list")
+        return;
+    std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+    if (container == "deque")
+        fordJohnsonSortDeque(dataDeq, chunkSize);
+    else 
+        fordJohnsonSortList(dataList, chunkSize);
+    std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+    std::chrono::microseconds duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    if (container == "deque")
+        deqTime = duration.count();
+    else 
+        listTime = duration.count();
+}
 
-    std::cout << "Original list: ";
-    for (std::list<int>::iterator it = dataList.begin(); it != dataList.end(); it++){
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-
-    fordJohnsonSortList(dataList, chunkSize);
-    fordJohnsonSortDeque(dataDeq, chunkSize);
-
-    std::cout << "Sorted list: ";
-    for (std::list<int>::iterator it = dataList.begin(); it != dataList.end(); it++){
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "Sorted deque: ";
-    for (std::deque<int>::iterator it = dataDeq.begin(); it != dataDeq.end(); it++){
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+void PmergeMe::printDuration(){
+    std::cout << "Time to process a range of " << dataList.size() << " elements with std::list<int>: " << listTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << dataDeq.size() << " elements with std::deque<int> " << deqTime << " us" << std::endl;
 }
 
 template <typename Container>
 bool hasDuplicates(const Container &container) {
+    return false;
     std::set<typename Container::value_type> seen;
     for (typename Container::const_iterator it = container.begin(); it != container.end(); it++){
         if (seen.find(*it) != seen.end())

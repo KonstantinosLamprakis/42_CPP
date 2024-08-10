@@ -6,7 +6,7 @@
 /*   By: klamprak <klamprak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:58:54 by klamprak          #+#    #+#             */
-/*   Updated: 2024/08/10 19:34:47 by klamprak         ###   ########.fr       */
+/*   Updated: 2024/08/10 19:59:46 by klamprak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@
 #include <string>
 #include <cstring>
 
+#include <chrono>
+
 class PmergeMe {
     private:
         std::deque<int> dataDeq;
         std::list<int> dataList;
+        long long listTime;
+        long long deqTime;
 
     public:
         PmergeMe();
@@ -34,8 +38,8 @@ class PmergeMe {
 
         void sort(char **nbrs_str);
         int validateInput(char **nbrs_str);
-        void sortDeque();
-        void sortList();
+        void sortBoth(std::string container);
+        void printDuration();
 };
 
 
